@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fall 2026 // End of Term</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 16 16%22%3E%3Crect x=%221%22 y=%221%22 width=%2214%22 height=%2214%22 fill=%22none%22 stroke=%22%2300e5ff%22 stroke-width=%222%22/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="top">
+  <div class="brand">
+    <h1 id="title">FALL 2026 // END OF TERM</h1>
+    <div class="sub"><span id="mode-badge" class="badge">—</span><span id="counts"></span></div>
+  </div>
+  <section id="today-box" class="today-box" aria-live="polite"></section>
+  <div class="actions">
+    <button id="btn-add" title="Add an item">+ ITEM</button>
+    <button id="btn-export" title="Download the current data as data.json">EXPORT JSON</button>
+    <label class="btn" title="Load a data.json file">IMPORT<input id="file-import" type="file" accept=".json,application/json" hidden></label>
+    <button id="btn-reset" class="ghost" title="Discard browser draft and reload data.json">RELOAD FILE</button>
+  </div>
+</header>
+
+<nav class="filters">
+  <div id="legend" class="legend"></div>
+  <label class="toggle"><input id="hide-done" type="checkbox"> hide done</label>
+  <div class="keys">
+    <span class="key k-today">today</span>
+    <span class="key k-break">Thanksgiving</span>
+    <span class="key k-finals">finals week</span>
+    <span class="key k-exam">exam</span>
+  </div>
+</nav>
+
+<main>
+  <div class="dow">
+    <div>SUN</div><div>MON</div><div>TUE</div><div>WED</div><div>THU</div><div>FRI</div><div>SAT</div>
+  </div>
+  <div id="cal" class="cal"></div>
+
+  <section class="unsched">
+    <h2>NOT YET DATED <span id="unsched-n"></span></h2>
+    <p class="hint">Click an item to give it a date. Due dates for these weren't in the uploaded syllabi.</p>
+    <div id="unsched"></div>
+  </section>
+</main>
+
+<footer>
+  <div id="status" class="status" data-kind="info">[--:--:--] starting…</div>
+</footer>
+
+<dialog id="dlg">
+  <form id="frm" method="dialog">
+    <h3 id="dlg-title">EDIT ITEM</h3>
+    <div class="grid2">
+      <label>Date <input name="date" type="date"></label>
+      <label>Course <select name="course"></select></label>
+      <label>Start / due time <input name="time" type="time"></label>
+      <label>End time <input name="end" type="time"></label>
+      <label>Type <input name="type" list="types" autocomplete="off"></label>
+      <label>Location <input name="location"></label>
+    </div>
+    <label>Title <input name="title" required></label>
+    <label>Notes <textarea name="notes" rows="3"></textarea></label>
+    <label class="inline"><input name="done" type="checkbox"> done</label>
+    <datalist id="types"></datalist>
+    <div class="dlg-actions">
+      <button type="button" id="btn-del" class="danger">DELETE</button>
+      <span class="spacer"></span>
+      <button type="button" id="btn-cancel" class="ghost">CANCEL</button>
+      <button type="submit" id="btn-save">SAVE</button>
+    </div>
+  </form>
+</dialog>
+
+<script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,387 @@
+{
+  "meta": {
+    "title": "Fall 2026 // End of Term",
+    "start": "2026-11-08",
+    "end": "2026-12-19",
+    "updated": null,
+    "schema": 1
+  },
+  "courses": {
+    "CHEM 181": {
+      "color": "#00e5ff",
+      "name": "Majors General Chemistry I"
+    },
+    "CHEM 181 Lab": {
+      "color": "#1de9b6",
+      "name": "CHEM 181 Lab 001D"
+    },
+    "INFO 579": {
+      "color": "#76ff03",
+      "name": "SQL/NoSQL Databases"
+    },
+    "INFO 555": {
+      "color": "#b388ff",
+      "name": "Applied NLP"
+    },
+    "MAT 231": {
+      "color": "#ff8a3d",
+      "name": "Calculus II (Pima)"
+    }
+  },
+  "types": [
+    "Homework",
+    "Quiz",
+    "Lab worksheet",
+    "Project",
+    "Assignment",
+    "Programming",
+    "EXAM",
+    "EXAM (alt)",
+    "Optional",
+    "Other"
+  ],
+  "periods": [
+    {
+      "id": "tg-recess",
+      "kind": "break",
+      "label": "Thanksgiving recess",
+      "start": "2026-11-25",
+      "end": "2026-11-29"
+    },
+    {
+      "id": "tg-day",
+      "kind": "closure",
+      "label": "Thanksgiving · campus closed",
+      "start": "2026-11-26",
+      "end": "2026-11-26"
+    },
+    {
+      "id": "tg-fri",
+      "kind": "closure",
+      "label": "University closure",
+      "start": "2026-11-27",
+      "end": "2026-11-27"
+    },
+    {
+      "id": "finals",
+      "kind": "finals",
+      "label": "Finals week",
+      "start": "2026-12-11",
+      "end": "2026-12-17"
+    }
+  ],
+  "items": [
+    {
+      "id": "i001",
+      "date": "2026-11-17",
+      "time": "23:59",
+      "end": null,
+      "course": "MAT 231",
+      "type": "Homework",
+      "title": "HW 11.9 due (Power-series representations)",
+      "location": "Online",
+      "notes": "",
+      "done": false
+    },
+    {
+      "id": "i002",
+      "date": "2026-11-18",
+      "time": "09:00",
+      "end": "09:50",
+      "course": "CHEM 181",
+      "type": "EXAM",
+      "title": "Midterm Exam 3 (HW 8–9)",
+      "location": "Commons 105",
+      "notes": "Opt-in question for the Dec 11 alternative final is ON this exam — decide beforehand",
+      "done": false
+    },
+    {
+      "id": "i003",
+      "date": "2026-11-19",
+      "time": "13:45",
+      "end": null,
+      "course": "MAT 231",
+      "type": "Quiz",
+      "title": "Check-In Quiz 3.4 (in class)",
+      "location": "NWA A106",
+      "notes": "",
+      "done": false
+    },
+    {
+      "id": "i004",
+      "date": "2026-11-19",
+      "time": "23:59",
+      "end": null,
+      "course": "MAT 231",
+      "type": "Homework",
+      "title": "HW 11.10 due (Taylor & Maclaurin)",
+      "location": "Online",
+      "notes": "",
+      "done": false
+    },
+    {
+      "id": "i005",
+      "date": "2026-11-24",
+      "time": "13:45",
+      "end": "15:30",
+      "course": "MAT 231",
+      "type": "EXAM",
+      "title": "Exam 3 (Chapter 11)",
+      "location": "NWA A106",
+      "notes": "",
+      "done": false
+    },
+    {
+      "id": "i006",
+      "date": "2026-12-01",
+      "time": "19:50",
+      "end": null,
+      "course": "CHEM 181 Lab",
+      "type": "Lab worksheet",
+      "title": "Lab 10 Worksheet due before end of lab",
+      "location": "Koffler 561",
+      "notes": "Last lab of the term",
+      "done": false
+    },
+    {
+      "id": "i007",
+      "date": "2026-12-03",
+      "time": "23:59",
+      "end": null,
+      "course": "MAT 231",
+      "type": "Homework",
+      "title": "HW 10.1 due (Parametric curves)",
+      "location": "Online",
+      "notes": "",
+      "done": false
+    },
+    {
+      "id": "i008",
+      "date": "2026-12-08",
+      "time": "13:45",
+      "end": null,
+      "course": "MAT 231",
+      "type": "Quiz",
+      "title": "Check-In Quiz 4.1 (in class)",
+      "location": "NWA A106",
+      "notes": "",
+      "done": false
+    },
+    {
+      "id": "i009",
+      "date": "2026-12-08",
+      "time": "23:59",
+      "end": null,
+      "course": "MAT 231",
+      "type": "Homework",
+      "title": "HW 10.2 due (Calculus w/ parametric curves)",
+      "location": "Online",
+      "notes": "",
+      "done": false
+    },
+    {
+      "id": "i010",
+      "date": "2026-12-10",
+      "time": "23:59",
+      "end": null,
+      "course": "MAT 231",
+      "type": "Homework",
+      "title": "HW 10.3 due (Polar coordinates)",
+      "location": "Online",
+      "notes": "",
+      "done": false
+    },
+    {
+      "id": "i011",
+      "date": "2026-12-11",
+      "time": "08:00",
+      "end": "10:00",
+      "course": "CHEM 181",
+      "type": "EXAM (alt)",
+      "title": "ALT Final",
+      "location": "Room TBD",
+      "notes": "ONLY if opted in on Midterm 3; If opted in, you may NOT sit the Dec 17 final",
+      "done": false
+    },
+    {
+      "id": "i012",
+      "date": "2026-12-13",
+      "time": null,
+      "end": null,
+      "course": "INFO 579",
+      "type": "Project",
+      "title": "Project 3 (NoSQL / MongoDB) due",
+      "location": "D2L",
+      "notes": "Time of day not in syllabus — confirm. Projects replace the final; late = max 70%",
+      "done": false
+    },
+    {
+      "id": "i013",
+      "date": "2026-12-15",
+      "time": "13:45",
+      "end": null,
+      "course": "MAT 231",
+      "type": "Quiz",
+      "title": "Check-In Quiz 4.2 (in class)",
+      "location": "NWA A106",
+      "notes": "",
+      "done": false
+    },
+    {
+      "id": "i014",
+      "date": "2026-12-15",
+      "time": "15:30",
+      "end": "17:30",
+      "course": "INFO 555",
+      "type": "EXAM",
+      "title": "Final Exam",
+      "location": "Confirm",
+      "notes": "registrar slot (MW 3:00-hour block); Syllabus: open-book, 'posted to D2L'. CONFLICT if in person: MAT 231 at Pima NW ends 3:30 same day",
+      "done": false
+    },
+    {
+      "id": "i015",
+      "date": "2026-12-15",
+      "time": "23:59",
+      "end": null,
+      "course": "MAT 231",
+      "type": "Homework",
+      "title": "HW 10.4 due (Calculus in polar)",
+      "location": "Online",
+      "notes": "",
+      "done": false
+    },
+    {
+      "id": "i016",
+      "date": "2026-12-17",
+      "time": "10:30",
+      "end": "12:30",
+      "course": "CHEM 181",
+      "type": "EXAM",
+      "title": "Final Exam",
+      "location": "Lecture room (confirm)",
+      "notes": "ACS standardized, cumulative (110 min); Registrar slot matches syllabus",
+      "done": false
+    },
+    {
+      "id": "i017",
+      "date": "2026-12-17",
+      "time": "13:45",
+      "end": "15:30",
+      "course": "MAT 231",
+      "type": "EXAM",
+      "title": "Final Exam",
+      "location": "NWA A106 (confirm)",
+      "notes": "cumulative, Ch 10 emphasis; Time not in schedule — class slot assumed. Leaves ~1 h after CHEM final to get to Pima NW",
+      "done": false
+    },
+    {
+      "id": "u001",
+      "date": null,
+      "time": null,
+      "end": null,
+      "course": "CHEM 181",
+      "type": "Homework",
+      "title": "Mastering HW 10, 11, 12",
+      "location": "Mastering",
+      "notes": "Dates are in the Brightspace Course Schedule PDF (not uploaded)",
+      "done": false
+    },
+    {
+      "id": "u002",
+      "date": null,
+      "time": null,
+      "end": null,
+      "course": "INFO 555",
+      "type": "Programming",
+      "title": "Programming Assignment 4 + grad additional task",
+      "location": "GitHub Classroom",
+      "notes": "Not dated in syllabus",
+      "done": false
+    },
+    {
+      "id": "u003",
+      "date": null,
+      "time": null,
+      "end": null,
+      "course": "INFO 555",
+      "type": "Quiz",
+      "title": "PA4 assignment quiz (+ grad task quiz)",
+      "location": "D2L",
+      "notes": "Opens after PA4 submitted",
+      "done": false
+    },
+    {
+      "id": "u004",
+      "date": null,
+      "time": null,
+      "end": null,
+      "course": "INFO 555",
+      "type": "Programming",
+      "title": "Programming Assignment 5 + grad additional task",
+      "location": "GitHub Classroom",
+      "notes": "Not dated in syllabus",
+      "done": false
+    },
+    {
+      "id": "u005",
+      "date": null,
+      "time": null,
+      "end": null,
+      "course": "INFO 555",
+      "type": "Quiz",
+      "title": "PA5 assignment quiz (+ grad task quiz)",
+      "location": "D2L",
+      "notes": "Opens after PA5 submitted",
+      "done": false
+    },
+    {
+      "id": "u006",
+      "date": null,
+      "time": null,
+      "end": null,
+      "course": "INFO 555",
+      "type": "Quiz",
+      "title": "Remaining lecture quizzes (of 20)",
+      "location": "In class",
+      "notes": "",
+      "done": false
+    },
+    {
+      "id": "u007",
+      "date": null,
+      "time": null,
+      "end": null,
+      "course": "INFO 579",
+      "type": "Assignment",
+      "title": "Remaining weekly assignments (of 14)",
+      "location": "D2L",
+      "notes": "Late not accepted",
+      "done": false
+    },
+    {
+      "id": "u008",
+      "date": null,
+      "time": null,
+      "end": null,
+      "course": "INFO 579",
+      "type": "Quiz",
+      "title": "Remaining lecture quizzes (of 28)",
+      "location": "In class",
+      "notes": "",
+      "done": false
+    },
+    {
+      "id": "u009",
+      "date": null,
+      "time": null,
+      "end": null,
+      "course": "MAT 231",
+      "type": "Optional",
+      "title": "Course evaluation (anonymous, ungraded)",
+      "location": "Brightspace",
+      "notes": "",
+      "done": false
+    }
+  ]
+}
