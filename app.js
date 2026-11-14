@@ -53,14 +53,23 @@ async function boot() {
   try {
     const r = await fetch("data.json", { cache: "no-store" });
     if (!r.ok) throw new Error(`HTTP ${r.status}`);
-    fileData = await r.json();
+    const text = await r.text();
+    S.fileHash = fnv1a(text);
+    fileData = JSON.parse(text);
   } catch (e) {
     status(`could not fetch data.json (${e.message}). If opened as a file, run serve.py or use IMPORT.`, "err");
   }
 
   if (S.mode === "static") {
     const draft = loadDraft();
-    if (draft) {
+    // A draft only applies to the data.json it was made from. If the file has
+    // been updated since (a push), the file wins; the old draft is set aside.
+    if (draft && fileData && draft.base !== S.fileHash) {
+      try { localStorage.setItem(DRAFT_KEY + ".stale", JSON.stringify(draft)); } catch (_) {}
+      clearDraft();
+      status(`data.json changed since your browser draft (${new Date(draft.saved).toLocaleString()}) — showing the new file; old draft set aside`, "warn");
+      S.data = fileData;
+    } else if (draft) {
       S.data = draft.data;
       status(`static mode · using browser draft from ${new Date(draft.saved).toLocaleString()} — EXPORT JSON to update the file, RELOAD FILE to discard`, "warn");
     }
@@ -85,11 +94,17 @@ function normalize() {
 }
 
 // ---------- persistence ----------
+// 32-bit FNV-1a over the raw data.json text: fingerprints the file a draft was made from.
+function fnv1a(str) {
+  let h = 0x811c9dc5;
+  for (let i = 0; i < str.length; i++) { h ^= str.charCodeAt(i); h = Math.imul(h, 0x01000193) >>> 0; }
+  return h.toString(16).padStart(8, "0");
+}
 function loadDraft() {
   try { const raw = localStorage.getItem(DRAFT_KEY); return raw ? JSON.parse(raw) : null; } catch (_) { return null; }
 }
 function saveDraft() {
-  try { localStorage.setItem(DRAFT_KEY, JSON.stringify({ saved: Date.now(), data: S.data })); return true; }
+  try { localStorage.setItem(DRAFT_KEY, JSON.stringify({ saved: Date.now(), base: S.fileHash || null, data: S.data })); return true; }
   catch (_) { return false; }
 }
 function clearDraft() { try { localStorage.removeItem(DRAFT_KEY); } catch (_) {} }
@@ -103,6 +118,7 @@ function changed(what) {
     S.saveTimer = setTimeout(saveServer, 300);
   } else {
     const ok = saveDraft();
+    updateBadge();
     status(ok ? `${what} · kept in browser draft — EXPORT JSON to write data.json` : `${what} · browser storage unavailable — EXPORT JSON now to keep it`, "warn");
   }
 }
