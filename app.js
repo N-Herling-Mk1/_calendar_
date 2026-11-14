@@ -6,7 +6,9 @@
 "use strict";
 
 const DRAFT_KEY = "fall26cal.draft.v1";
-const S = { data: null, mode: "static", hidden: new Set(), hideDone: false, saveTimer: null, editId: null };
+const SEL_KEY = "fall26cal.sel.v1";
+const S = { data: null, mode: "static", sel: new Set(), hideDone: false, saveTimer: null, editId: null };
+try { (JSON.parse(localStorage.getItem(SEL_KEY)) || []).forEach((c) => S.sel.add(c)); } catch (_) {}
 const $ = (s) => document.querySelector(s);
 
 // ---------- utilities ----------
@@ -145,7 +147,8 @@ async function reloadFile() {
 function render() {
   if (!S.data) return;
   S.lastToday = iso(today());
-  renderLegend(); renderToday(); renderCal(); renderUnsched(); updateBadge(); renderCounts();
+  S.sel.forEach((c) => { if (!S.data.courses[c]) S.sel.delete(c); });   // drop courses no longer in the file
+  renderPanels(); renderSelSummary(); renderToday(); renderCal(); renderUnsched(); updateBadge(); renderCounts();
 }
 
 function updateBadge() {
@@ -159,21 +162,70 @@ function renderCounts() {
   $("#counts").textContent = `${its.length - done} open · ${done} done · ${its.filter((i) => !i.date).length} undated`;
 }
 
-function renderLegend() {
-  const el = $("#legend"); el.innerHTML = "";
-  Object.keys(S.data.courses).forEach((c) => {
-    const s = document.createElement("span");
-    s.className = "chip" + (S.hidden.has(c) ? " off" : "");
-    s.style.setProperty("--c", color(c));
-    s.textContent = c; s.title = `${S.data.courses[c].name || c} — click to show/hide`;
-    s.onclick = () => { S.hidden.has(c) ? S.hidden.delete(c) : S.hidden.add(c); render(); };
-    el.appendChild(s);
+// ---------- course panels (filter) ----------
+const inSel = (it) => S.sel.size === 0 || S.sel.has(it.course);
+function saveSel() { try { localStorage.setItem(SEL_KEY, JSON.stringify([...S.sel])); } catch (_) {} }
+function toggleCourse(c) {
+  S.sel.has(c) ? S.sel.delete(c) : S.sel.add(c);
+  saveSel(); render();
+  status(S.sel.size ? `showing ${[...S.sel].join(", ")}` : "showing all courses");
+}
+function clearSel() { S.sel.clear(); saveSel(); render(); status("showing all courses"); }
+
+function panelStats(list) {
+  const t = today(), tIso = iso(t);
+  const done = list.filter((i) => i.done).length;
+  const open = list.filter((i) => !i.done);
+  const overdue = open.filter((i) => i.date && i.date < tIso).length;
+  const next = open.filter((i) => i.date && i.date >= tIso).sort((a, b) => sortKey(a).localeCompare(sortKey(b)))[0];
+  const exams = open.filter((i) => isExam(i) && i.date && i.date >= tIso).length;
+  return { total: list.length, done, overdue, next, exams, pct: list.length ? Math.round((done / list.length) * 100) : 0 };
+}
+
+function panelEl(code, name, color, list, pressed, onClick, keyHint) {
+  const st = panelStats(list), t = today();
+  const b = document.createElement("button");
+  b.type = "button";
+  b.className = "panel" + (pressed ? " on" : "") + (S.sel.size && !pressed && code !== "ALL" ? " dim" : "");
+  b.style.setProperty("--c", color);
+  b.setAttribute("aria-pressed", pressed ? "true" : "false");
+  b.title = `${code}${keyHint ? ` — key ${keyHint}` : ""}`;
+  const nxt = st.next
+    ? `<b>NEXT</b> ${esc(fmtD(parseD(st.next.date)))} (${dayDiff(t, parseD(st.next.date))}d) · <span class="${isExam(st.next) ? "ex" : ""}">${code === "ALL" ? esc(st.next.course) + " · " : ""}${esc(st.next.title)}</span>`
+    : (st.total ? "nothing upcoming" : "no items");
+  b.innerHTML =
+    `<div class="p-top"><span class="p-code">${esc(code)}</span><span class="p-key">${keyHint ?? ""}</span></div>` +
+    `<div class="p-name">${esc(name)}</div>` +
+    `<div class="p-bar"><i style="width:${st.pct}%"></i></div>` +
+    `<div class="p-stats">${st.done}/${st.total} done` +
+      (st.overdue ? ` · <span class="ex">${st.overdue} overdue</span>` : "") +
+      (st.exams ? ` · ${st.exams} exam${st.exams > 1 ? "s" : ""} left` : "") + `</div>` +
+    `<div class="p-next">${nxt}</div>`;
+  b.onclick = onClick;
+  return b;
+}
+
+function renderPanels() {
+  const el = $("#panels"); el.innerHTML = "";
+  el.appendChild(panelEl("ALL", "every course", "#cfe9f2", S.data.items, S.sel.size === 0, clearSel, "0"));
+  Object.keys(S.data.courses).forEach((c, k) => {
+    const list = S.data.items.filter((i) => i.course === c);
+    el.appendChild(panelEl(c, S.data.courses[c].name || "", color(c), list, S.sel.has(c), () => toggleCourse(c), k < 9 ? String(k + 1) : null));
   });
+}
+
+function renderSelSummary() {
+  const el = $("#sel-summary");
+  if (!S.sel.size) { el.innerHTML = `<span class="muted">showing all courses · click panels to filter (keys 1–${Math.min(9, Object.keys(S.data.courses).length)}, 0 = all)</span>`; return; }
+  const shown = S.data.items.filter((i) => i.date && inSel(i)).length;
+  el.innerHTML = `FILTER ` + [...S.sel].map((c) => `<span class="chip" style="--c:${color(c)}">${esc(c)}</span>`).join(" ") +
+    ` <span class="muted">${shown} dated item${shown === 1 ? "" : "s"}</span> <button id="sel-clear" class="ghost">SHOW ALL</button>`;
+  $("#sel-clear").onclick = clearSel;
 }
 
 function renderToday() {
   const t = today(), tIso = iso(t);
-  const open = S.data.items.filter((i) => !i.done && i.date).sort((a, b) => sortKey(a).localeCompare(sortKey(b)));
+  const open = S.data.items.filter((i) => !i.done && i.date && inSel(i)).sort((a, b) => sortKey(a).localeCompare(sortKey(b)));
   const dueToday = open.filter((i) => i.date === tIso);
   const upcoming = open.filter((i) => i.date > tIso);
   const week = upcoming.filter((i) => dayDiff(t, parseD(i.date)) <= 7).length;
@@ -187,13 +239,14 @@ function renderToday() {
     rows += `<div class="row"><b>NEXT</b> ${esc(fmtD(parseD(n.date)))} (${dd}d) · <span class="${isExam(n) ? "ex" : ""}">${esc(n.course)} · ${esc(n.title)}</span></div>`;
   }
   rows += `<div class="row"><b>7-DAY</b> ${week} open${overdue ? ` · <span class="ex">${overdue} past due & unchecked</span>` : ""}${per.length ? ` · ${esc(per.join(" · "))}` : ""}</div>`;
-  $("#today-box").innerHTML = `<div class="lbl">TODAY</div><div class="date">${esc(fmtD(t)).toUpperCase()}, ${t.getFullYear()}</div>${rows}`;
+  const filt = S.sel.size ? ` <span class="filt">· ${esc([...S.sel].join(", "))}</span>` : "";
+  $("#today-box").innerHTML = `<div class="lbl">TODAY${filt}</div><div class="date">${esc(fmtD(t)).toUpperCase()}, ${t.getFullYear()}</div>${rows}`;
 }
 
 function itemEl(it) {
   const d = document.createElement("div");
   d.className = "item" + (isExam(it) ? " exam" : "") + (it.done ? " done" : "") +
-    ((S.hidden.has(it.course) || (S.hideDone && it.done)) ? " hidden" : "");
+    ((!inSel(it) || (S.hideDone && it.done)) ? " hidden" : "");
   d.style.setProperty("--c", color(it.course));
   const tip = [it.type, it.location, it.notes].filter(Boolean).join(" · ");
   d.title = tip;
@@ -307,4 +360,13 @@ $("#btn-export").onclick = () => S.data && exportJson();
 $("#btn-reset").onclick = reloadFile;
 $("#file-import").onchange = (e) => { if (e.target.files[0]) importJson(e.target.files[0]); e.target.value = ""; };
 $("#hide-done").onchange = (e) => { S.hideDone = e.target.checked; render(); };
+// keys 1..9 toggle course panels, 0 = all (ignored while typing or with the dialog open)
+document.addEventListener("keydown", (e) => {
+  if (!S.data || $("#dlg").open || e.ctrlKey || e.metaKey || e.altKey) return;
+  if (/^(INPUT|TEXTAREA|SELECT)$/.test(e.target.tagName)) return;
+  if (e.key === "0") { clearSel(); return; }
+  const n = Number(e.key);
+  const codes = Object.keys(S.data.courses);
+  if (n >= 1 && n <= Math.min(9, codes.length)) toggleCourse(codes[n - 1]);
+});
 boot();

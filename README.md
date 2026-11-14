@@ -8,7 +8,8 @@ End-of-term calendar for Fall 2026 (Nov 8 – Dec 19): homework, deliverables, e
 - Sun–Sat calendar grid, check-off boxes, click-to-edit / add / delete
 - TODAY box: due today, next open item with days left, 7-day count; today's cell highlighted
 - Shaded periods: Thanksgiving recess / closures, finals week
-- Course chips toggle visibility; "hide done" filter
+- Course panels across the top (ALL + one per course): progress bar, done/overdue counts, exams left, next due item. Click one or several to show only those courses on the calendar and in the TODAY box; ALL / SHOW ALL clears. Keys `1`–`5` toggle, `0` = all. Selection is remembered per browser.
+- "hide done" filter
 - Undated items panel (assign a date to move onto the grid)
 - Status line logs every load / save / failure
 
