@@ -72,6 +72,54 @@
   ],
   "items": [
     {
+      "id": "f011",
+      "date": "2026-11-10",
+      "time": "23:59",
+      "end": null,
+      "course": "INFO 579",
+      "type": "Assignment",
+      "title": "Unit 11 assignment due",
+      "location": "D2L",
+      "notes": "Late not accepted",
+      "done": false
+    },
+    {
+      "id": "u002",
+      "date": "2026-11-13",
+      "time": "23:59",
+      "end": null,
+      "course": "INFO 555",
+      "type": "Programming",
+      "title": "Programming 4: Sequence Processing (+ grad task)",
+      "location": "GitHub Classroom + D2L",
+      "notes": "Push notebook to GitHub, upload to D2L",
+      "done": false
+    },
+    {
+      "id": "u003",
+      "date": "2026-11-13",
+      "time": "23:59",
+      "end": null,
+      "course": "INFO 555",
+      "type": "Quiz",
+      "title": "PA4 quiz (+ grad task quiz)",
+      "location": "D2L",
+      "notes": "Due with PA4 per D2L schedule",
+      "done": false
+    },
+    {
+      "id": "c001",
+      "date": "2026-11-16",
+      "time": "23:55",
+      "end": null,
+      "course": "CHEM 181",
+      "type": "Homework",
+      "title": "Mastering HW due",
+      "location": "Mastering",
+      "notes": "Due 11:55 PM (syllabus). From D2L schedule; HW number not recorded",
+      "done": false
+    },
+    {
       "id": "i001",
       "date": "2026-11-17",
       "time": "23:59",
@@ -120,6 +168,18 @@
       "done": false
     },
     {
+      "id": "f012",
+      "date": "2026-11-22",
+      "time": "23:59",
+      "end": null,
+      "course": "INFO 579",
+      "type": "Assignment",
+      "title": "Unit 12 assignment due",
+      "location": "D2L",
+      "notes": "Late not accepted",
+      "done": false
+    },
+    {
       "id": "i005",
       "date": "2026-11-24",
       "time": "13:45",
@@ -129,6 +189,30 @@
       "title": "Exam 3 (Chapter 11)",
       "location": "NWA A106",
       "notes": "",
+      "done": false
+    },
+    {
+      "id": "f013",
+      "date": "2026-11-29",
+      "time": "23:59",
+      "end": null,
+      "course": "INFO 579",
+      "type": "Assignment",
+      "title": "Unit 13 assignment due",
+      "location": "D2L",
+      "notes": "Late not accepted",
+      "done": false
+    },
+    {
+      "id": "c002",
+      "date": "2026-11-30",
+      "time": "23:55",
+      "end": null,
+      "course": "CHEM 181",
+      "type": "Homework",
+      "title": "Mastering HW due",
+      "location": "Mastering",
+      "notes": "Due 11:55 PM (syllabus). From D2L schedule; HW number not recorded",
       "done": false
     },
     {
@@ -156,6 +240,42 @@
       "done": false
     },
     {
+      "id": "u004",
+      "date": "2026-12-04",
+      "time": "23:59",
+      "end": null,
+      "course": "INFO 555",
+      "type": "Programming",
+      "title": "Programming 5: Pre-trained LMs (+ grad task)",
+      "location": "GitHub Classroom + D2L",
+      "notes": "Quiz opens after submission",
+      "done": false
+    },
+    {
+      "id": "f014",
+      "date": "2026-12-06",
+      "time": "23:59",
+      "end": null,
+      "course": "INFO 579",
+      "type": "Assignment",
+      "title": "Unit 14 assignment due",
+      "location": "D2L",
+      "notes": "Late not accepted",
+      "done": false
+    },
+    {
+      "id": "c003",
+      "date": "2026-12-07",
+      "time": "23:55",
+      "end": null,
+      "course": "CHEM 181",
+      "type": "Homework",
+      "title": "Mastering HW due",
+      "location": "Mastering",
+      "notes": "Due 11:55 PM (syllabus). From D2L schedule; HW number not recorded",
+      "done": false
+    },
+    {
       "id": "i008",
       "date": "2026-12-08",
       "time": "13:45",
@@ -177,6 +297,18 @@
       "title": "HW 10.2 due (Calculus w/ parametric curves)",
       "location": "Online",
       "notes": "",
+      "done": false
+    },
+    {
+      "id": "c004",
+      "date": "2026-12-09",
+      "time": "23:55",
+      "end": null,
+      "course": "CHEM 181",
+      "type": "Homework",
+      "title": "Mastering HW due",
+      "location": "Mastering",
+      "notes": "Due 11:55 PM (syllabus). From D2L schedule; HW number not recorded",
       "done": false
     },
     {
@@ -206,13 +338,25 @@
     {
       "id": "i012",
       "date": "2026-12-13",
-      "time": null,
+      "time": "23:59",
       "end": null,
       "course": "INFO 579",
       "type": "Project",
       "title": "Project 3 (NoSQL / MongoDB) due",
       "location": "D2L",
-      "notes": "Time of day not in syllabus — confirm. Projects replace the final; late = max 70%",
+      "notes": "11:59 PM per D2L schedule. Projects replace the final; late = max 70%",
+      "done": false
+    },
+    {
+      "id": "f015",
+      "date": "2026-12-13",
+      "time": "23:59",
+      "end": null,
+      "course": "INFO 579",
+      "type": "Assignment",
+      "title": "Unit 15 assignment due",
+      "location": "D2L",
+      "notes": "Late not accepted",
       "done": false
     },
     {
@@ -234,9 +378,9 @@
       "end": "17:30",
       "course": "INFO 555",
       "type": "EXAM",
-      "title": "Final Exam",
-      "location": "Confirm",
-      "notes": "registrar slot (MW 3:00-hour block); Syllabus: open-book, 'posted to D2L'. CONFLICT if in person: MAT 231 at Pima NW ends 3:30 same day",
+      "title": "Final Exam (online window)",
+      "location": "Online (D2L)",
+      "notes": "Available 3:30 PM, due 5:30 PM; availability ends 11:59 PM. Online, so no clash with MAT 231",
       "done": false
     },
     {
@@ -276,54 +420,6 @@
       "done": false
     },
     {
-      "id": "u001",
-      "date": null,
-      "time": null,
-      "end": null,
-      "course": "CHEM 181",
-      "type": "Homework",
-      "title": "Mastering HW 10, 11, 12",
-      "location": "Mastering",
-      "notes": "Dates are in the Brightspace Course Schedule PDF (not uploaded)",
-      "done": false
-    },
-    {
-      "id": "u002",
-      "date": null,
-      "time": null,
-      "end": null,
-      "course": "INFO 555",
-      "type": "Programming",
-      "title": "Programming Assignment 4 + grad additional task",
-      "location": "GitHub Classroom",
-      "notes": "Not dated in syllabus",
-      "done": false
-    },
-    {
-      "id": "u003",
-      "date": null,
-      "time": null,
-      "end": null,
-      "course": "INFO 555",
-      "type": "Quiz",
-      "title": "PA4 assignment quiz (+ grad task quiz)",
-      "location": "D2L",
-      "notes": "Opens after PA4 submitted",
-      "done": false
-    },
-    {
-      "id": "u004",
-      "date": null,
-      "time": null,
-      "end": null,
-      "course": "INFO 555",
-      "type": "Programming",
-      "title": "Programming Assignment 5 + grad additional task",
-      "location": "GitHub Classroom",
-      "notes": "Not dated in syllabus",
-      "done": false
-    },
-    {
       "id": "u005",
       "date": null,
       "time": null,
@@ -345,18 +441,6 @@
       "title": "Remaining lecture quizzes (of 20)",
       "location": "In class",
       "notes": "",
-      "done": false
-    },
-    {
-      "id": "u007",
-      "date": null,
-      "time": null,
-      "end": null,
-      "course": "INFO 579",
-      "type": "Assignment",
-      "title": "Remaining weekly assignments (of 14)",
-      "location": "D2L",
-      "notes": "Late not accepted",
       "done": false
     },
     {
